@@ -1,8 +1,9 @@
-let url = 'https://www.googleapis.com/youtube/v3/search?';
 const KEY = 'AIzaSyAw0K2aJMwUwrdrgDPC2P_BWiuivgG0_ek';
 
 const youtube = async (searchTerm) => {
-    const params = {
+    let url = 'https://www.googleapis.com/youtube/v3/search?';
+
+    let params = {
         part: 'snippet',
         maxResults: 5,
         q: searchTerm,
@@ -11,13 +12,17 @@ const youtube = async (searchTerm) => {
     
     for (let para in params) {
         url += `&${para}=${params[para]}`
-    }
+    };
 
     const response = await fetch(url, {
         method: 'GET'
     })
     .then(res => res.json())
-    .catch(err => console.log(err));
+    .then(data => {
+        console.log(data)
+        return data
+    })
+    .catch(err => console.log(err))
 
     return response
 }

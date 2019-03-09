@@ -28,7 +28,6 @@ class SearchBar extends React.Component {
                 variant='filled'
                 fullWidth
                 onChange={this.handleInput}
-                value={this.state.input}
                 /> 
             </form>
             
