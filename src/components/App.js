@@ -17,12 +17,16 @@ class App extends React.Component {
 
     render() {
         return (
-            <Grid container justify={'center'}>
-                <Grid item xs={8}>
+            <Grid container spacing={24} justify={'center'}>
+                <Grid item xs={7}>
                     <SearchBar onSearch={this.handleInput}/>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={3}>
                     <VideoCard videos={this.state.videos}/>
+                </Grid> 
+                
+                <Grid item xs={10}>
+                    VideoPlayer
                 </Grid>
             </Grid>
         )
