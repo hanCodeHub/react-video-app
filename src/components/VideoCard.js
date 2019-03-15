@@ -5,6 +5,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
+const styles = {
+    card: {
+      margin: '1rem 0',
+    },
+  };
+
 class VideoCard extends React.Component{
     constructor(props) {
         super(props)
@@ -19,19 +25,15 @@ class VideoCard extends React.Component{
             const videoDescrip = video.snippet.description;
 
             return (
-                <Card key={video.id.videoId}>
+                <Card key={video.id.videoId} style={styles.card}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            height="140"
                             image={imageURL}
                         />
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
+                            <Typography gutterBottom variant="h6">
                                 {videoTitle}
-                            </Typography>
-                            <Typography component="p">
-                                {videoDescrip}
                             </Typography>
                         </CardContent>
                     </CardActionArea>

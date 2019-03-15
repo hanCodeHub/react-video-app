@@ -17,7 +17,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <Grid container spacing={12} justify={'center'}>
+            <Grid container spacing={16} justify={'center'}>
                 <Grid item xs={10}>
                     <SearchBar onSearch={this.handleInput}/>
                 </Grid>
