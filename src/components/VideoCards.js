@@ -11,25 +11,33 @@ const styles = {
     },
   };
 
-class VideoCard extends React.Component{
+class VideoCards extends React.Component{
     constructor(props) {
         super(props)
 
-        this.state = {link: ''}
+        this.videos = props.videos;
+        this.state = {selectedTitle: ''}
     }
 
     render() {
+        console.log(this.props.videos)
         const cards = this.props.videos.map((video) => {
             const imageURL = video.snippet.thumbnails.default.url;
             const videoTitle = video.snippet.title;
-            const videoDescrip = video.snippet.description;
 
             return (
-                <Card key={video.id.videoId} style={styles.card}>
+                <Card 
+                    key={video.id.videoId} 
+                    style={styles.card}
+                >
                     <CardActionArea>
                         <CardMedia
                             component="img"
                             image={imageURL}
+                            onClick={e => {
+                                this.setState({selectedTitle:videoTitle});
+                                this.props.onCardSelect(this.state.selectedTitle);
+                            }}
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h6">
@@ -45,4 +53,4 @@ class VideoCard extends React.Component{
     }
 }
 
-export default VideoCard;
+export default VideoCards;

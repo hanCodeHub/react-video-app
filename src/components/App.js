@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 
 import SearchBar from './SearchBar';
 import youtube from './../api/youtube';
-import VideoCard from './VideoCard';
+import VideoCards from './VideoCards';
 
 class App extends React.Component {
     state = {
@@ -25,7 +25,10 @@ class App extends React.Component {
                     VideoPlayer
                 </Grid>
                 <Grid item xs={3}>
-                    <VideoCard videos={this.state.videos}/>
+                    <VideoCards 
+                        videos={this.state.videos}
+                        onCardSelect={this.handleInput}
+                    />
                 </Grid> 
             </Grid>
         )
