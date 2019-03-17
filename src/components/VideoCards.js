@@ -11,46 +11,34 @@ const styles = {
     },
   };
 
-class VideoCards extends React.Component{
-    constructor(props) {
-        super(props)
+const VideoCards = (props) => {
+    const cards = props.videos.map((video) => {
+        const imageURL = video.snippet.thumbnails.high.url;
+        const videoTitle = video.snippet.title;
 
-        this.videos = props.videos;
-        this.state = {selectedTitle: ''}
-    }
+        return (
+            <Card 
+                key={video.id.videoId} 
+                style={styles.card}
+                onClick={e => props.onCardSelect(videoTitle)}
+            >
+                <CardActionArea >
+                    <CardMedia
+                        component="img"
+                        image={imageURL}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h6">
+                            {videoTitle}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+        )
+    })
 
-    render() {
-        console.log(this.props.videos)
-        const cards = this.props.videos.map((video) => {
-            const imageURL = video.snippet.thumbnails.default.url;
-            const videoTitle = video.snippet.title;
+    return cards;
 
-            return (
-                <Card 
-                    key={video.id.videoId} 
-                    style={styles.card}
-                >
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            image={imageURL}
-                            onClick={e => {
-                                this.setState({selectedTitle:videoTitle});
-                                this.props.onCardSelect(this.state.selectedTitle);
-                            }}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h6">
-                                {videoTitle}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
-            )
-        })
-
-        return cards;
-    }
 }
 
 export default VideoCards;

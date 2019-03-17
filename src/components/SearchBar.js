@@ -30,7 +30,6 @@ class SearchBar extends React.Component {
                 onChange={this.handleInput}
                 /> 
             </form>
-            
         )
     }
 }

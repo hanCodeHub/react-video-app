@@ -7,12 +7,18 @@ import VideoCards from './VideoCards';
 
 class App extends React.Component {
     state = {
-        videos: []
+        videos: [],
+        selectedTitle: ''
     };
 
     handleInput = async (searchTerm) => {
         let data = await youtube(searchTerm);
-        this.setState({videos: data.items})
+        this.setState({videos: data.items});
+    }
+
+    handleCardSelect = (selectTerm) => {
+        this.setState({selectedTitle: selectTerm});
+        this.handleInput(selectTerm);
     }
 
     render() {
@@ -21,15 +27,16 @@ class App extends React.Component {
                 <Grid item xs={10}>
                     <SearchBar onSearch={this.handleInput}/>
                 </Grid>
-                <Grid item xs={7}>
-                    VideoPlayer
-                </Grid>
                 <Grid item xs={3}>
                     <VideoCards 
                         videos={this.state.videos}
-                        onCardSelect={this.handleInput}
+                        onCardSelect={this.handleCardSelect}
                     />
-                </Grid> 
+                </Grid>                 
+                <Grid item xs={7}>
+                    VideoPlayer
+                </Grid>
+
             </Grid>
         )
     }
