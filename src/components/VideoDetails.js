@@ -3,17 +3,19 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
-    card: {
-      margin: '1rem 0',
+    paperDiv: {
+        margin: '1rem 0'
     },
+    paperInner: {
+        padding: '1.5rem'
+    }
   };
 
 const VideoDetails = ({video, videoList}) => {
-    console.log(video)
     if (video) { 
         return (
-        <div style={styles.card}>
-            <Paper>
+        <div style={styles.paperDiv}>
+            <Paper style={styles.paperInner}>
                 <Typography variant="h5" component="h3">    
                     {video.snippet.title}
                 </Typography>
@@ -25,15 +27,15 @@ const VideoDetails = ({video, videoList}) => {
         )
     } else if (!videoList.length == 0) {
         return (
-        <div style={styles.card}>
-            <Paper>
+        <div style={styles.paperDiv}>
+            <Paper style={styles.paperInner}>
                 <Typography variant="h5" component="h3">    
                     Please select a video from the list.
                 </Typography>
             </Paper>
         </div>
         ) 
-    } else return null;
+    } return null;
 }
 
 export default VideoDetails;

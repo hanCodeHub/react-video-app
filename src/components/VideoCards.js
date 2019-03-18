@@ -18,9 +18,8 @@ const VideoCards = (props) => {
         const videoTitle = video.snippet.title;
 
         return (
-            <div>
+            <div key={video.id.videoId}>
                 <Card 
-                    key={video.id.videoId} 
                     style={styles.card}
                     // pass video to App on click
                     onClick={e => props.onCardSelect(video)}>

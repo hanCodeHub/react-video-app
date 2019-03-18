@@ -5,11 +5,12 @@ import SearchBar from './SearchBar';
 import youtube from './../api/youtube';
 import VideoCards from './VideoCards';
 import VideoDetails from './VideoDetails';
+import VideoPlayer from './VideoPlayer';
 
 class App extends React.Component {
     state = {
         videos: [],
-        videoSelect: null
+        videoSelect: null,
     };
     
     // send request on both search and card select
@@ -19,6 +20,7 @@ class App extends React.Component {
         } else {
             let data = await youtube(searchTerm);
             this.setState({videos: data.items});
+            console.log(this.state.videos);
         }
     }
 
@@ -41,21 +43,28 @@ class App extends React.Component {
     render() {
         return (
             <Grid container spacing={16} justify={'center'}>
+                
                 <Grid item xs={10}>
                     <SearchBar onSearch={this.handleInput}/>
                 </Grid>
-                <Grid item xs={3}>
-                    <VideoCards 
-                        videos={this.state.videos}
-                        onCardSelect={this.handleCardSelect}
-                />
-                </Grid>                 
-                <Grid item xs={7}>
+
+                <Grid item sm={7} xs={10}>
+                    <VideoPlayer 
+                        video={this.state.videoSelect}
+                    />    
                     <VideoDetails 
                         video={this.state.videoSelect}
                         videoList={this.state.videos}
-                />
+                    />
                 </Grid>
+
+                <Grid item sm={3} xs={10}>
+                    <VideoCards 
+                        videos={this.state.videos}
+                        onCardSelect={this.handleCardSelect}
+                    />
+                </Grid> 
+                
             </Grid>
         )
     }
