@@ -8,17 +8,24 @@ import VideoCards from './VideoCards';
 class App extends React.Component {
     state = {
         videos: [],
-        selectedTitle: ''
+        videoSelect: {}
     };
-
+    // send request on both search and card select
     handleInput = async (searchTerm) => {
         let data = await youtube(searchTerm);
         this.setState({videos: data.items});
     }
 
-    handleCardSelect = (selectTerm) => {
-        this.setState({selectedTitle: selectTerm});
-        this.handleInput(selectTerm);
+    handleCardSelect = (video) => {
+        // find if non-english chars were used - regex
+        
+        // send request to translate - Yandex
+        if (!video.snippet.title.match('/^[a-zA-Z \.\!\?]*$/')) {
+            alert('Non-english chars detected.');
+        } else {
+            this.setState({ videoSelect: video });
+            this.handleInput(video.snippet.title);
+        }
     }
 
     render() {

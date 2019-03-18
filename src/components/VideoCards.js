@@ -12,6 +12,8 @@ const styles = {
   };
 
 const VideoCards = (props) => {
+    console.log(props.videos)
+    // render list of videos in cards
     const cards = props.videos.map((video) => {
         const imageURL = video.snippet.thumbnails.high.url;
         const videoTitle = video.snippet.title;
@@ -20,7 +22,8 @@ const VideoCards = (props) => {
             <Card 
                 key={video.id.videoId} 
                 style={styles.card}
-                onClick={e => props.onCardSelect(videoTitle)}
+                // pass video to App on click
+                onClick={e => props.onCardSelect(video)}
             >
                 <CardActionArea >
                     <CardMedia
