@@ -10,22 +10,31 @@ class App extends React.Component {
         videos: [],
         videoSelect: {}
     };
+    
     // send request on both search and card select
-    handleInput = async (searchTerm) => {
-        let data = await youtube(searchTerm);
-        this.setState({videos: data.items});
+    handleInput = async (searchTerm) => {   
+        if (!this.checkChars(searchTerm)) {
+            alert('Please enter ASCII characters.');
+        } else {
+            let data = await youtube(searchTerm);
+            this.setState({videos: data.items});
+        }
     }
 
+    // handle VideoCard selection
     handleCardSelect = (video) => {
-        // find if non-english chars were used - regex
-        
-        // send request to translate - Yandex
-        if (!video.snippet.title.match('/^[a-zA-Z \.\!\?]*$/')) {
-            alert('Non-english chars detected.');
+        if (!this.checkChars(video.snippet.title)) {
+            alert('Non-ASCII characters detected.');
         } else {
             this.setState({ videoSelect: video });
             this.handleInput(video.snippet.title);
         }
+    }
+
+    // check for non-ASCII chars
+    checkChars (str) {
+        const ASCII = /^[ -~\t\n\r]+$/g;
+        return str.match(ASCII); 
     }
 
     render() {

@@ -12,31 +12,31 @@ const styles = {
   };
 
 const VideoCards = (props) => {
-    console.log(props.videos)
     // render list of videos in cards
     const cards = props.videos.map((video) => {
         const imageURL = video.snippet.thumbnails.high.url;
         const videoTitle = video.snippet.title;
 
         return (
-            <Card 
-                key={video.id.videoId} 
-                style={styles.card}
-                // pass video to App on click
-                onClick={e => props.onCardSelect(video)}
-            >
-                <CardActionArea >
-                    <CardMedia
-                        component="img"
-                        image={imageURL}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h6">
-                            {videoTitle}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
+            <div>
+                <Card 
+                    key={video.id.videoId} 
+                    style={styles.card}
+                    // pass video to App on click
+                    onClick={e => props.onCardSelect(video)}>
+                    <CardActionArea >
+                        <CardMedia
+                            component="img"
+                            image={imageURL}
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h6">
+                                {videoTitle}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </div>
         )
     })
 
