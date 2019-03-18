@@ -4,11 +4,12 @@ import Grid from '@material-ui/core/Grid';
 import SearchBar from './SearchBar';
 import youtube from './../api/youtube';
 import VideoCards from './VideoCards';
+import VideoDetails from './VideoDetails';
 
 class App extends React.Component {
     state = {
         videos: [],
-        videoSelect: {}
+        videoSelect: null
     };
     
     // send request on both search and card select
@@ -47,12 +48,14 @@ class App extends React.Component {
                     <VideoCards 
                         videos={this.state.videos}
                         onCardSelect={this.handleCardSelect}
-                    />
+                />
                 </Grid>                 
                 <Grid item xs={7}>
-                    VideoPlayer
+                    <VideoDetails 
+                        video={this.state.videoSelect}
+                        videoList={this.state.videos}
+                />
                 </Grid>
-
             </Grid>
         )
     }
