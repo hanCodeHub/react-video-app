@@ -7,6 +7,10 @@ import VideoCards from './VideoCards';
 import VideoDetails from './VideoDetails';
 import VideoPlayer from './VideoPlayer';
 
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import stockIMG from './../img/stock-thumbnail.jpg';
+
 class App extends React.Component {
     state = {
         videos: [],
@@ -50,6 +54,23 @@ class App extends React.Component {
                 
                 <Grid item xs={10}>
                     <SearchBar onSearch={this.handleInput}/>
+                </Grid>
+
+                <Grid item xs={10}>
+                    <Paper style={{cursor: 'pointer', position: 'relative', }}>  
+                        <img 
+                            src={stockIMG}
+                            height='100'
+                            width='150'
+                            style={{display: 'inline-block', marginBottom: '-4px'}}
+                        />
+                        <Typography 
+                            variant='h5'
+                            style={{display: 'inline-block', position: 'absolute', top: '50%', transform: 'translateY(-50%)', paddingLeft: '2rem'}}>
+                            
+                            This is a piece of paper
+                        </Typography>
+                    </Paper>
                 </Grid>
 
                 <Grid item sm={7} xs={10}>
