@@ -24,8 +24,7 @@ const youtube = async (searchTerm) => {
         method: 'GET'
     })
     .then(res => res.json())
-    .then(data => data)
-    .catch(err => console.log(err));
+    .catch(err => err);
     
     return response
 }

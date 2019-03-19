@@ -18,9 +18,13 @@ class App extends React.Component {
         if (!this.checkChars(searchTerm)) {
             alert('Please enter ASCII characters.');
         } else {
-            let data = await youtube(searchTerm);
-            this.setState({videos: data.items});
-            console.log(this.state.videos);
+            try {
+                let data = await youtube(searchTerm);
+                this.setState({ videos: data.items });
+                console.log(this.state.videos);
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 
