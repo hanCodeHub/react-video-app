@@ -1,6 +1,12 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
+const styles = {
+    textField: {
+        borderBottom: '#2196f3'
+    }
+}
+
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
@@ -28,6 +34,7 @@ class SearchBar extends React.Component {
                 variant='filled'
                 fullWidth
                 onChange={this.handleInput}
+                style={styles.textField}
                 /> 
             </form>
         )

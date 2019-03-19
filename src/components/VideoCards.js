@@ -36,7 +36,8 @@ const VideoCards = (props) => {
                     // pass selected video to App
                     onClick={e => props.onCardSelect(video)} 
                     style={styles.paper}
-                    className='rise'>
+                    className='rise'
+                    elevation='3'>
                     <img
                         src={imageURL}
                         height='100'

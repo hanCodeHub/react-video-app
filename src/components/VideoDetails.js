@@ -8,20 +8,24 @@ const styles = {
     },
     paperInner: {
         padding: '1rem 1.5rem',
-        textAlign: 'center'
+        textAlign: 'center',
+        backgroundColor: '#0091ea',
+    },
+    typography: {
+        color: '#fff'
     }
   };
 
-const VideoDetails = ({video, videoList}) => {
+const VideoDetails = ({video, videoList}) => {    
     if (video) { 
         return (
         <div style={styles.paperDiv}>
-            <Paper style={styles.paperInner}>
-                <Typography variant="h5" component="h3">    
+            <Paper style={styles.paperInner} elevation='0'>
+                <Typography style={styles.typography} variant="h5" component="h3">    
                     {video.snippet.title}
-                </Typography>
-                <Typography component="p">
+                    <p>
                     {video.snippet.description}
+                    </p>
                 </Typography>
             </Paper>
         </div>
@@ -29,8 +33,8 @@ const VideoDetails = ({video, videoList}) => {
     } else if (!videoList.length == 0) {
         return (
         <div style={styles.paperDiv}>
-            <Paper style={styles.paperInner}>
-                <Typography variant="h5" component="h3">    
+            <Paper style={styles.paperInner} elevation='0'>
+                <Typography style={styles.typography} variant="h5" component="h3">
                     Select a video from the list.
                 </Typography>
             </Paper>

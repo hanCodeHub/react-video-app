@@ -7,10 +7,6 @@ import VideoCards from './VideoCards';
 import VideoDetails from './VideoDetails';
 import VideoPlayer from './VideoPlayer';
 
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import stockIMG from './../img/stock-thumbnail.jpg';
-
 class App extends React.Component {
     state = {
         videos: [],
