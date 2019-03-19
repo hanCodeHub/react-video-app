@@ -50,30 +50,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <Grid container spacing={16} justify={'center'}>
+            <Grid container direction='row' justify='center' spacing={16}>
                 
-                <Grid item xs={10}>
+                <Grid item xs={12} sm={10} lg={8} xl={7}>
                     <SearchBar onSearch={this.handleInput}/>
                 </Grid>
 
-                <Grid item xs={10}>
-                    <Paper style={{cursor: 'pointer', position: 'relative', }}>  
-                        <img 
-                            src={stockIMG}
-                            height='100'
-                            width='150'
-                            style={{display: 'inline-block', marginBottom: '-4px'}}
-                        />
-                        <Typography 
-                            variant='h5'
-                            style={{display: 'inline-block', position: 'absolute', top: '50%', transform: 'translateY(-50%)', paddingLeft: '2rem'}}>
-                            
-                            This is a piece of paper
-                        </Typography>
-                    </Paper>
-                </Grid>
-
-                <Grid item sm={7} xs={10}>
+                <Grid item xs={12} sm={10} lg={8} xl={7}>
                     <VideoPlayer 
                         video={this.state.videoSelect}
                     />    
@@ -83,13 +66,12 @@ class App extends React.Component {
                     />
                 </Grid>
 
-                <Grid item sm={3} xs={10}>
-                    <VideoCards 
+                <Grid item zeroMinWidth xs={12} sm={10} lg={8} xl={7}>
+                    <VideoCards
                         videos={this.state.videos}
                         onCardSelect={this.handleCardSelect}
                     />
-                </Grid> 
-                
+                </Grid>
             </Grid>
         )
     }

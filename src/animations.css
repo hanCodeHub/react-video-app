@@ -1,0 +1,5 @@
+/* ANIMATIONS */
+
+.rise:hover {
+    transform: translateY(-.5rem);
+}

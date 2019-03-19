@@ -7,7 +7,8 @@ const styles = {
         margin: '1rem 0'
     },
     paperInner: {
-        padding: '1.5rem'
+        padding: '1rem 1.5rem',
+        textAlign: 'center'
     }
   };
 
@@ -30,7 +31,7 @@ const VideoDetails = ({video, videoList}) => {
         <div style={styles.paperDiv}>
             <Paper style={styles.paperInner}>
                 <Typography variant="h5" component="h3">    
-                    Please select a video from the list.
+                    Select a video from the list.
                 </Typography>
             </Paper>
         </div>

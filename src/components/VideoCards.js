@@ -1,14 +1,27 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
-    card: {
-      margin: '1rem 0',
+    paper: {
+        cursor: 'pointer',
+        position: 'relative',
+        marginBottom: '1rem',
+        transition: '.3s ease',
+        overflow: 'hidden'
     },
+    img: {
+        display: 'inline-block',
+        marginBottom: '-4px'
+    },
+    typography: {
+        display: 'inline-block',
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        padding: '2rem',
+
+    }
   };
 
 const VideoCards = (props) => {
@@ -19,22 +32,21 @@ const VideoCards = (props) => {
 
         return (
             <div key={video.id.videoId}>
-                <Card 
-                    style={styles.card}
-                    // pass video to App on click
-                    onClick={e => props.onCardSelect(video)}>
-                    <CardActionArea >
-                        <CardMedia
-                            component="img"
-                            image={imageURL}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h6">
-                                {videoTitle}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
+                <Paper 
+                    // pass selected video to App
+                    onClick={e => props.onCardSelect(video)} 
+                    style={styles.paper}
+                    className='rise'>
+                    <img
+                        src={imageURL}
+                        height='100'
+                        width='150'
+                        style={styles.img}
+                    />
+                    <Typography variant='subtitle1' style={styles.typography}>
+                        {videoTitle}
+                    </Typography>
+                </Paper>
             </div>
         )
     })
