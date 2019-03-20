@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import './../animations.css';
+import './../styles.css';
 
 const styles = {
     paper: {
@@ -27,7 +27,6 @@ const styles = {
   };
 
 const VideoCards = (props) => {
-    console.log(props.videos)
     // render list of videos in cards
     const cards = props.videos.map((video) => {
         const imageURL = video.snippet.thumbnails.high.url;
