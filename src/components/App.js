@@ -13,43 +13,28 @@ class App extends React.Component {
         videoSelect: null,
     };
     
-    // send request on both search and card select
-    handleInput = async (searchTerm) => {   
-        if (!this.checkChars(searchTerm)) {
-            alert('Please enter ASCII characters.');
-        } else {
-            try {
-                let data = await youtube(searchTerm);
-                this.setState({ videos: data.items });
-                console.log(this.state.videos);
-            } catch (err) {
-                console.log(err);
-            }
+    handleSearch = async (searchTerm) => {   
+        // get valid characters from searchTerm
+        const term = searchTerm.replace(/[\W]/gi, ' ');
+        try {
+            let data = await youtube(term);
+            this.setState({ videos: data.items });
+        } catch (err) {
+            console.log(err);
         }
     }
 
     // handle VideoCard selection
     handleCardSelect = (video) => {
-        if (!this.checkChars(video.snippet.title)) {
-            alert('Non-ASCII characters detected.');
-        } else {
-            this.setState({ videoSelect: video });
-            this.handleInput(video.snippet.title);
-        }
-    }
-
-    // check for non-ASCII chars
-    checkChars (str) {
-        const ASCII = /^[ -~\t\n\r]+$/g;
-        return str.match(ASCII); 
+        this.setState({ videoSelect: video });
+        this.handleSearch(video.snippet.title);
     }
 
     render() {
         return (
             <Grid container direction='row' justify='center' spacing={16}>
-                
                 <Grid item xs={12} sm={10} lg={8} xl={7}>
-                    <SearchBar onSearch={this.handleInput}/>
+                    <SearchBar onSearch={this.handleSearch}/>
                 </Grid>
 
                 <Grid item xs={12} sm={10} lg={8} xl={7}>

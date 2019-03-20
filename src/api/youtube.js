@@ -11,11 +11,12 @@ const youtube = async (searchTerm) => {
         type: 'video',
         maxResults: 5,
         q: searchTerm,
-        key: KEY
+        key: KEY,
+        rel: 0
     };
     
-    for (let para in params) {
-        url += `&${para}=${params[para]}`
+    for (let key in params) {
+        url += `&${key}=${params[key]}`
     };
 
     console.log(url);

@@ -2,6 +2,8 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+import './../animations.css';
+
 const styles = {
     paper: {
         cursor: 'pointer',
@@ -25,6 +27,7 @@ const styles = {
   };
 
 const VideoCards = (props) => {
+    console.log(props.videos)
     // render list of videos in cards
     const cards = props.videos.map((video) => {
         const imageURL = video.snippet.thumbnails.high.url;
@@ -36,10 +39,11 @@ const VideoCards = (props) => {
                     // pass selected video to App
                     onClick={e => props.onCardSelect(video)} 
                     style={styles.paper}
-                    className='rise'
-                    elevation='3'>
+                    className='paper'
+                    elevation={3}>
                     <img
                         src={imageURL}
+                        alt={video.snippet.title}
                         height='100'
                         width='150'
                         style={styles.img}

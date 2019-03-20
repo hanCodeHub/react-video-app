@@ -1,5 +1,5 @@
 /* ANIMATIONS */
 
-.rise:hover {
-    transform: translateY(-.5rem);
+.paper:hover {
+    background-color:#e8eaf6;
 }
