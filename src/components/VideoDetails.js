@@ -20,10 +20,10 @@ const styles = {
     }
   };
 
-const VideoDetails = ({video, videoList}) => {  
+const VideoDetails = ({video, videoList, newSearch}) => {  
     
     // if a video is selected from VideoCards list
-    if (video) { 
+    if (video && !newSearch) { 
         return (
         <div style={styles.paperDiv}>
             <Paper style={styles.paperInner} elevation={0}>
@@ -48,7 +48,7 @@ const VideoDetails = ({video, videoList}) => {
         </div>
         );
     // welcome message when the app first loads
-    } return (
+    } else return (
         <div style={styles.paperDiv}>
             <Paper style={styles.paperInner} elevation={0}>
                 <Typography style={styles.subtitle} variant="h5">

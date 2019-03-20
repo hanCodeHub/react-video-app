@@ -11,8 +11,10 @@ class App extends React.Component {
     state = {
         videos: [],
         videoSelect: null,
+        newSearch: false
     };
     
+    // handle all requests
     handleSearch = async (searchTerm) => {   
         // get valid characters from searchTerm
         const term = searchTerm.replace(/[\W]/gi, ' ');
@@ -24,9 +26,14 @@ class App extends React.Component {
         }
     }
 
+    // for requests from SearchBar only
+    markNewSearch = () => {
+        this.setState({ newSearch: true });
+    }
+
     // handle VideoCard selection
     handleCardSelect = (video) => {
-        this.setState({ videoSelect: video });
+        this.setState({ videoSelect: video, newSearch: false });
         this.handleSearch(video.snippet.title);
     }
 
@@ -34,16 +41,21 @@ class App extends React.Component {
         return (
             <Grid container direction='row' justify='center' spacing={16}>
                 <Grid item xs={12} sm={10} lg={8} xl={7}>
-                    <SearchBar onSearch={this.handleSearch}/>
+                    <SearchBar 
+                        onSearch={this.handleSearch} 
+                        onNewSearch={this.markNewSearch}
+                    />
                 </Grid>
 
                 <Grid item xs={12} sm={10} lg={8} xl={7}>
                     <VideoPlayer 
                         video={this.state.videoSelect}
+                        newSearch={this.state.newSearch}
                     />    
                     <VideoDetails 
                         video={this.state.videoSelect}
                         videoList={this.state.videos}
+                        newSearch={this.state.newSearch}
                     />
                 </Grid>
 

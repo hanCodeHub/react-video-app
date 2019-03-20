@@ -16,21 +16,21 @@ const styles = {
     }
 }
 
-const VideoPlayer = ({video}) => {
-    if (video) {
+const VideoPlayer = ({video, newSearch}) => {
+    if (video && !newSearch) {
         const videoSRC = `https://www.youtube.com/embed/${video.id.videoId}?rel=0;&autoplay=1`;
         
-    return ( 
-        <div style={styles.container}>
-            <iframe 
-                style={styles.iframe} 
-                title={video.snippet.title}
-                allow="autoplay"
-                src={videoSRC} 
-                allowFullScreen>
-            </iframe>
-        </div>
-    )
+        return ( 
+            <div style={styles.container}>
+                <iframe 
+                    style={styles.iframe} 
+                    title={video.snippet.title}
+                    allow="autoplay"
+                    src={videoSRC} 
+                    allowFullScreen>
+                </iframe>
+            </div>
+        )
     } else return null;
 }
 
